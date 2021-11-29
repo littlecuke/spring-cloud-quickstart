@@ -1,5 +1,5 @@
 server:
-  port: 9002 # 服务端口
+  port: 9002                                   # 服务端口
 spring:
   application:
     name: user-service                         # 服务名称
@@ -15,10 +15,10 @@ mybatis:
   mapper-locations: classpath:mapper/*.xml     # Mapper XML 文件地址
 logging:
   level:
-    com.example: debug
+    org.example: debug
   pattern:
     dateformat: MM-dd HH:mm:ss
 eureka:
   client:
     service-url:
-      defaultZone: http://127.0.0.1:9000/eureka
+      defaultZone: http://127.0.0.1:9000/eureka # 注册中心
