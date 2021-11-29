@@ -1,2 +1,19 @@
 server:
   port: 9002
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql:///cloud_user?useSSL=false
+    username: root
+    password: 123456
+mybatis:
+  type-aliases-package: com.example.user.pojo
+  configuration:
+    map-underscore-to-camel-case: true
+  mapper-locations: classpath:mapper/*.xml
+logging:
+  level:
+    com.example: debug
+  pattern:
+    dateformat: MM-dd HH:mm:ss
