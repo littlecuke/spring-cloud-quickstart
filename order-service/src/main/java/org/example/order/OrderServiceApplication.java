@@ -1,5 +1,7 @@
 package org.example.order;
 
+import com.netflix.loadbalancer.IRule;
+import com.netflix.loadbalancer.RandomRule;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -21,6 +23,18 @@ public class OrderServiceApplication {
     @LoadBalanced // 负载均衡
     public RestTemplate restTemplate() {
         return new RestTemplate();
+    }
+
+    /**
+     * 修改负载均衡策略
+     * <p>
+     * 注意: 这种是作用于全局的，如果需要针对于某个微服务进行修改需要使用配置的方式进行修改
+     *
+     * @return {@link RandomRule}
+     */
+    @Bean
+    public IRule randomRule() {
+        return new RandomRule();
     }
 
 }
