@@ -1,2 +1,19 @@
 server:
   port: 9001
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql:///cloud_order?useSSL=false
+    username: root
+    password: 123456
+mybatis:
+  type-aliases-package: com.example.order.pojo
+  configuration:
+    map-underscore-to-camel-case: true
+  mapper-locations: classpath:mapper/*.xml
+logging:
+  level:
+    com.example: debug
+  pattern:
+    dateformat: MM-dd HH:mm:ss
