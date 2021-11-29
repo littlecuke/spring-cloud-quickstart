@@ -22,7 +22,10 @@ public class OrderServiceImpl implements OrderService {
         Order order = orderMapper.selectById(id);
         // 获取订单的用户ID
         // 拼装获取用户信息的url
-        String url = "http://localhost:9002/user/" + order.getUserId();
+        // 这里采用硬编码的方式完成url的拼接, 不方便部署
+        // String url = "http://localhost:9002/user/" + order.getUserId();
+        // 采用服务的名称代替ip地址和端口
+        String url = "http://user-service/user/" + order.getUserId();
         // 通过远程调用获取用户信息
         User user = restTemplate.getForObject(url, User.class);
         // 将用户的信息封装到订单对象并返回
