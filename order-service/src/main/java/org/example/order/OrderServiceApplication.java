@@ -32,9 +32,9 @@ public class OrderServiceApplication {
      *
      * @return {@link RandomRule}
      */
-    @Bean
-    public IRule randomRule() {
-        return new RandomRule();
-    }
+    // @Bean
+    // public IRule randomRule() {
+    //     return new RandomRule();
+    // }
 
 }
