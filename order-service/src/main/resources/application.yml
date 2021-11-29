@@ -25,3 +25,9 @@ eureka:
 user-service:
   ribbon:
     NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule # 配置负载均衡策略规则
+# Ribbon 默认是懒加载的，即第一次访问时才创建LoadBalanceClient，请求时间会很长
+# 饥饿加载则会在项目启动时创建，降低第一次访问的耗时
+ribbon:
+  eager-load:
+    enabled: true # 开启饥饿加载
+    clients: user-service # 指定要进行饥饿加载的服务
