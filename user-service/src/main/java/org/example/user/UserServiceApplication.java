@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
 @EnableEurekaClient
-@MapperScan("com.example.user.mapper")
+@MapperScan("org.example.user.mapper")
 @SpringBootApplication
 public class UserServiceApplication {
 
