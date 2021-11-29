@@ -1,0 +1,9 @@
+server:
+  port: 9000 # 服务端口
+spring:
+  application:
+    name: eureka-server # eureka 的服务名称
+eureka:
+  client:
+    service-url: # eureka 的地址信息
+      defaultZone: http://127.0.0.1:${server.port}/eureka
