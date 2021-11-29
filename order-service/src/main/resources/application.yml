@@ -1,19 +1,24 @@
 server:
-  port: 9001
-
+  port: 9001                                    # 服务端口
 spring:
+  application:
+    name: order-service                         # 服务名称
   datasource:
-    driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql:///cloud_order?useSSL=false
-    username: root
-    password: 123456
+    driver-class-name: com.mysql.jdbc.Driver    # 驱动全限定类名
+    url: jdbc:mysql:///cloud_order?useSSL=false # 数据库连接地址
+    username: root                              # 用户名
+    password: 123456                            # 密码
 mybatis:
-  type-aliases-package: com.example.order.pojo
+  type-aliases-package: org.example.order.pojo  # 实体类别名路径
   configuration:
-    map-underscore-to-camel-case: true
-  mapper-locations: classpath:mapper/*.xml
+    map-underscore-to-camel-case: true          # 开启下划线转驼峰
+  mapper-locations: classpath:mapper/*.xml      # Mapper XML 文件地址
 logging:
   level:
-    com.example: debug
+    org.example: debug
   pattern:
     dateformat: MM-dd HH:mm:ss
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:9000/eureka # 注册中心
