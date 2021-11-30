@@ -11,6 +11,8 @@ spring:
   cloud:
     nacos:
       server-addr: localhost:8848               # nacos 服务地址
+      discovery:
+        cluster-name: SH                        # 配置集群名称，比如: SH，上海
 mybatis:
   type-aliases-package: org.example.order.pojo  # 实体类别名路径
   configuration:
