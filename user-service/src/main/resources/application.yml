@@ -11,6 +11,8 @@ spring:
   cloud:
     nacos:
       server-addr: localhost:8848              # nacos 服务地址
+      discovery:
+        cluster-name: CD                       # 配置集群的名称, 比如: CD, 成都
 mybatis:
   type-aliases-package: org.example.user.pojo  # 实体类别名路径
   configuration:
