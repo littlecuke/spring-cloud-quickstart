@@ -14,6 +14,7 @@ spring:
       discovery:
         cluster-name: SH                        # 配置集群名称，比如: SH，上海
         namespace: 69865fe0-8f2c-418a-a6b5-af24b62a27a8 # 配置命名空间
+        ephemeral: false                        # 设置为非临时实例
         # Nacos环境隔离
         # 1.使用namespace配置环境隔离
         # 2.每个namespace都有唯一id
