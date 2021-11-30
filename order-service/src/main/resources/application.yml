@@ -29,7 +29,16 @@ logging:
 #      defaultZone: http://127.0.0.1:9000/eureka # 注册中心
 user-service:
   ribbon:
-    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule # 配置负载均衡策略规则
+    # NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule # 配置负载均衡策略规则
+    # Nacos负载均衡策略
+    # 1.优先选择同集群服务实例列表
+    # 2.本地集群找不到提供者, 才去其他集群中寻找, 并且会报警告
+    # 3.确定了可用实例列表后, 再采用随机负载均衡挑选实例
+    NFLoadBalancerRuleClassName: com.alibaba.cloud.nacos.ribbon.NacosRule # 配置负载均衡策略规则
+    # 实例的权重控制
+    # 1.Nacos控制台可以设置实例的权重值，0~1之间
+    # 2.同集群内的多个实例，权重越高被访问的频率越高
+    # 3.权重设置为0，则完全不会被访问
 # Ribbon 默认是懒加载的，即第一次访问时才创建LoadBalanceClient，请求时间会很长
 # 饥饿加载则会在项目启动时创建，降低第一次访问的耗时
 ribbon:
