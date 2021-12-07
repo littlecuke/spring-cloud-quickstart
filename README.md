@@ -7,3 +7,12 @@
 - Spring Cloud Alibaba
 - Nacos
 - ...
+
+### 项目结构
+
+```text
+spring-cloud-quickstart
+├─order-service            # 订单模块
+├─quickstart-eureka-server # eureka 注册中心
+└─user-service             # 用户模块
+```
