@@ -49,12 +49,16 @@ userservice:
 # 饥饿加载则会在项目启动时创建，降低第一次访问的耗时
 ribbon:
   eager-load:
-    enabled: true # 开启饥饿加载
+    enabled: true        # 开启饥饿加载
     clients: userservice # 指定要进行饥饿加载的服务
-# 方式一：
-#feign:
+# 方式一：配置文件
+# 方式二：使用配置类的方式注入Bean
+feign:
 #  client:
 #    config:
 #      default: # 如果配置的是default则为全局配置, 也可以配置具体的服务
 #        loggerLevel: FULL # 设置日志级别：NONE、BASIC、HEADERS、FULL
-# 方式二：使用配置类的方式注入Bean
+  httpclient:
+    enabled: true                 # 开启feign对httpclient的支持
+    max-connections: 200          # 最大的连接数
+    max-connections-per-route: 50 # 每个路径最大的连接数
