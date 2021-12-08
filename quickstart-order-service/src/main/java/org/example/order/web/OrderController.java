@@ -29,4 +29,13 @@ public class OrderController {
     public Order queryById(@PathVariable("id") Long id) {
         return orderService.queryById(id);
     }
+
+    /**
+     * 通过feign远程调用获取用户信息
+     */
+    @GetMapping("/client/{id}")
+    public Order queryByIdFromClient(@PathVariable("id") Long id) {
+        return orderService.queryByIdFromClient(id);
+    }
+
 }
