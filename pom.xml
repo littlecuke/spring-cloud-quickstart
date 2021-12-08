@@ -21,6 +21,7 @@
         <module>quickstart-user-service</module>
         <module>quickstart-eureka-server</module>
         <module>quickstart-feign-api</module>
+        <module>quickstart-gateway</module>
     </modules>
 
     <properties>
