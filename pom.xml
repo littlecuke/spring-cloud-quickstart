@@ -17,8 +17,8 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>order-service</module>
-        <module>user-service</module>
+        <module>quickstart-order-service</module>
+        <module>quickstart-user-service</module>
         <module>quickstart-eureka-server</module>
     </modules>
 

@@ -12,7 +12,7 @@
 
 ```text
 spring-cloud-quickstart
-├─order-service            # 订单模块
+├─quickstart-order-service # 订单模块
 ├─quickstart-eureka-server # eureka 注册中心
-└─user-service             # 用户模块
+└─quickstart-user-service  # 用户模块
 ```
