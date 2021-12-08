@@ -1,15 +1,13 @@
 package org.example.order.service.impl;
 
-import org.example.order.clients.UserClient;
+import org.example.feign.client.UserClient;
+import org.example.feign.pojo.User;
 import org.example.order.mapper.OrderMapper;
 import org.example.order.pojo.Order;
-import org.example.order.pojo.User;
 import org.example.order.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
-
-import java.sql.ClientInfoStatus;
 
 @Service
 public class OrderServiceImpl implements OrderService {

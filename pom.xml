@@ -20,6 +20,7 @@
         <module>quickstart-order-service</module>
         <module>quickstart-user-service</module>
         <module>quickstart-eureka-server</module>
+        <module>quickstart-feign-api</module>
     </modules>
 
     <properties>
