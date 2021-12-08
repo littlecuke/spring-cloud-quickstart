@@ -17,8 +17,8 @@ public class OrderServiceImpl implements OrderService {
     @Autowired
     private OrderMapper orderMapper;
 
-//    @Autowired
-//    private RestTemplate restTemplate;
+    @Autowired
+    private RestTemplate restTemplate;
 
     @Autowired
     private UserClient userClient;
@@ -32,12 +32,11 @@ public class OrderServiceImpl implements OrderService {
         // 这里采用硬编码的方式完成url的拼接, 不方便部署
         // String url = "http://localhost:9002/user/" + order.getUserId();
         // 采用服务的名称代替ip地址和端口
-        // String url = "http://userservice/user/" + order.getUserId();
+         String url = "http://userservice/user/" + order.getUserId();
         // 通过远程调用获取用户信息
-        // User user = restTemplate.getForObject(url, User.class);
+         User user = restTemplate.getForObject(url, User.class);
         // 将用户的信息封装到订单对象并返回
-        // order.setUser(user);
-        order.setUser(userClient.findById(order.getUserId()));
+         order.setUser(user);
         return order;
     }
 
