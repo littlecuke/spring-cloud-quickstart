@@ -9,4 +9,5 @@ import org.springframework.stereotype.Component;
 @ConfigurationProperties(prefix = "pattern") // 配置热更新
 public class Pattern {
     private String dateformat;
+    private String envSharedValue;
 }

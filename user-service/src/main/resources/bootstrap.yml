@@ -8,3 +8,15 @@ spring:
       server-addr: localhost:8848 # Nacos 服务地址
       config:
         file-extension: yaml # 配置文件后缀名
+# 配置加载的配置为：
+# [spring.application.name]-[spring.profiles.active].[spring.cloud.nacos.config.file-extension]
+# 当前配置加载的配置文件为：userservice-dev.yaml
+
+# 多环境共享配置
+# 在拉取对应的配置文件之前，会先加载 userservice.yaml 这个配置文件
+# 因此可以配置[spring.application.name].[spring.cloud.nacos.config.file-extension]
+# 实现多环境共享配置
+
+# 多配置的优先级
+# userservice-dev.yaml > userservice.yaml > 本地配置
+# 相同的配置会被优先级高的配置进行覆盖
