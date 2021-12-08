@@ -13,7 +13,10 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
 
 // 开启远程调用
-// 如果client所在包与主程序类不一致时需要手动指定包路径
+// 如果client所在包与主程序类不一致时在自动注入时会找不到
+// 解决：
+// 一、指定包路径：basePackages = { "org.example.feign.client" }
+// 二、指定类型：clients = { UserClient.class }
 @EnableFeignClients(
         defaultConfiguration = DefaultFeignConfiguration.class,
         basePackages = { "org.example.feign.client" }
