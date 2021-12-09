@@ -20,5 +20,8 @@ spring:
           # 读取用户定义的断言条件，对请求做出判断
           predicates:
             - Path=/order/**
+      # 过滤器的作用
+      # 1.对路由的请求或响应做加工处理，比如添加请求头
+      # 2.配置在路由下的过滤器只会对当前路由请求生效
       default-filters: # 默认过滤器，作用于所有的请求
         - AddRequestHeader=X-Request-red, blue
