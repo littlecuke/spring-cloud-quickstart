@@ -27,3 +27,18 @@ spring:
         - AddRequestHeader=X-Request-red, blue
       # 全局过滤器与网关过滤器的区别
       # 网关过滤器通过配置定义，处理逻辑是固定的，全局过滤器的逻辑需要自己写代码实现
+      globalcors: # 全局处理跨域
+        add-to-simple-url-handler-mapping: true # 解决options请求被拦截
+        cors-configurations:
+          '[/**]':
+            allowedOrigins: # 允许哪些网站的跨域请求
+              - "http://localhost:8090"
+            allowedMethods:
+              - "GET"
+              - "POST"
+              - "DELETE"
+              - "PUT"
+              - "OPTIONS"
+            allowedHeaders: "*" # 允许在请求头中携带的信息
+            allowedCredentials: true # 是否允许携带cookie
+            maxAge: 360000 # 跨域检测的有效期
