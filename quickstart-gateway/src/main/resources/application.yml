@@ -20,3 +20,5 @@ spring:
           # 读取用户定义的断言条件，对请求做出判断
           predicates:
             - Path=/order/**
+      default-filters: # 默认过滤器，作用于所有的请求
+        - AddRequestHeader=X-Request-red, blue
