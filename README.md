@@ -6,6 +6,7 @@
 - Eureka(Eureka Server、Eureka Client)
 - Spring Cloud Alibaba
 - Nacos
+- Spring Cloud Gateway
 - ...
 
 ### 项目结构
@@ -14,6 +15,7 @@
 spring-cloud-quickstart
 ├─quickstart-eureka-server # eureka 注册中心
 ├─quickstart-feign-api     # 远程调用api
+├─quickstart-gateway       # 网关服务
 ├─quickstart-order-service # 订单模块
 └─quickstart-user-service  # 用户模块
 ```
