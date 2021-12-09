@@ -25,3 +25,5 @@ spring:
       # 2.配置在路由下的过滤器只会对当前路由请求生效
       default-filters: # 默认过滤器，作用于所有的请求
         - AddRequestHeader=X-Request-red, blue
+      # 全局过滤器与网关过滤器的区别
+      # 网关过滤器通过配置定义，处理逻辑是固定的，全局过滤器的逻辑需要自己写代码实现
