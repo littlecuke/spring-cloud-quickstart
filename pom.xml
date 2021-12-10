@@ -22,6 +22,7 @@
         <module>quickstart-eureka-server</module>
         <module>quickstart-feign-api</module>
         <module>quickstart-gateway</module>
+        <module>quickstart-docker</module>
     </modules>
 
     <properties>
