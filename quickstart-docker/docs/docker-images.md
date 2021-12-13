@@ -29,3 +29,15 @@ docker search httpd
 ```bash
 docker rmi hello-world
 ```
+
+### 6.将镜像打包到本地
+
+```bash
+docker save -o redis.tar redis:latest
+```
+
+### 7.从本地加载镜像
+
+```bash
+docker load -i redis.tar
+```
