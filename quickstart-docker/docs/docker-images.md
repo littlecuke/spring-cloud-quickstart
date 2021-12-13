@@ -41,3 +41,26 @@ docker save -o redis.tar redis:latest
 ```bash
 docker load -i redis.tar
 ```
+
+### 8.常见问题
+
+#### 1.虚拟机桥接模式下，启动容器后没有网络
+
+```bash
+WARNING: IPv4 forwarding is disabled. Networking will not work.
+```
+
+**解决: 配置转发**
+
+```bash
+vim /etc/sysctl.conf
+
+# 配置转发
+net.ipv4.ip_forward=1
+
+# 重启网络
+systemctl restart network
+
+# 如果返回 'net.ipv4.ip_forward=1' 表示成功
+sysctl net.ipv4.ip_forward
+```
