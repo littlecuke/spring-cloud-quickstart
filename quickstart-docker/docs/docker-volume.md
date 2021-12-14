@@ -13,3 +13,9 @@ docker volume inspect html
 ```
 
 ![docker_volume_inspect](./assets/docker_volume_inspect.png)
+
+### 3.显示所有的数据卷
+
+```bash
+docker volume ls
+```
