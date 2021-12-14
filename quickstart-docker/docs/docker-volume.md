@@ -25,3 +25,9 @@ docker volume ls
 ```bash
 docker volume prune
 ```
+
+### 5.使用
+
+```bash
+docker run --name my-nginx -p 80:80 -v html:/usr/share/nginx/html -d nginx
+```
