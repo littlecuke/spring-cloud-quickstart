@@ -19,3 +19,9 @@ docker volume inspect html
 ```bash
 docker volume ls
 ```
+
+### 4.删除未使用的数据卷
+
+```bash
+docker volume prune
+```
