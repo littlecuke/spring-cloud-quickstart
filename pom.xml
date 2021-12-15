@@ -23,6 +23,7 @@
         <module>quickstart-feign-api</module>
         <module>quickstart-gateway</module>
         <module>quickstart-docker</module>
+        <module>quickstart-rabbitmq</module>
     </modules>
 
     <properties>
