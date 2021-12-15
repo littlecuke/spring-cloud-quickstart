@@ -1,4 +1,4 @@
-## RabbitMQ 环境搭建
+## RabbitMQ
 
 本教程中将采用Docker搭建RabbitMQ的测试环境
 
@@ -21,3 +21,10 @@ docker run \
   -d \
   rabbitmq:3-management
 ```
+
+### 3.基本概念
+
+- channel：操作MQ的工具
+- exchange：路由消息到队列中
+- queue：缓存消息
+- virtual host：虚拟主机，是对queue、exchange等资源的逻辑分组
