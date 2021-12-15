@@ -28,3 +28,13 @@ docker run \
 - exchange：路由消息到队列中
 - queue：缓存消息
 - virtual host：虚拟主机，是对queue、exchange等资源的逻辑分组
+
+### 4.案例
+
+#### HelloWorld
+
+官方的HelloWorld是基于最基础的消息队列模型来实现的，只包括三个角色：
+
+- publisher：消息发布者，将消息发送到队列中
+- queue：消息队列，负责接收并缓存消息
+- consumer：消息消费者，处理消息队列中缓存的消息
