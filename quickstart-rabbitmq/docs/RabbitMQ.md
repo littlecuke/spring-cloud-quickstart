@@ -110,3 +110,9 @@ public class SpringAMQPListener {
     }
 }
 ```
+
+### 8.Work模型的使用
+
+- 多个消费者绑定到一个队列，同一条消息只会被一个消费者处理
+- 通过设置prefetch来控制消费者预取的消息数量
+

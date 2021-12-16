@@ -5,8 +5,8 @@ import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Component;
 
 @Slf4j
-@Component
-public class SpringAMQPListener {
+// @Component
+public class SimpleQueueListener {
 
     public static final String QUEUE_NAME = "simple.queue";
 
