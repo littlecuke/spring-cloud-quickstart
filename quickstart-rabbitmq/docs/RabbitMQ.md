@@ -192,3 +192,79 @@ public class SpringAmqpTest {
 }
 ```
 
+##### DirectExchange
+
+Direct Exchange 会将接收到的消息根据规则路由到指定的队列，因此称为路由模式(routes)
+
+- 每一个Queue都会与Exchange设置一个BindingKey
+- 发布者在发布消息时要指定绑定的BindingKey
+- 交换机将消息路由到BindingKey与消息RoutingKey一致的队列
+
+**代码实现：**
+
+- 在Consumer服务中编写两个消费者方法，分别监听direct.queue1和direct.queue2
+- 并利用@RabbitListener声明Exchange、Queue、RoutingKey
+
+```java
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.amqp.rabbit.annotation.Exchange;
+import org.springframework.amqp.rabbit.annotation.Queue;
+import org.springframework.amqp.rabbit.annotation.QueueBinding;
+import org.springframework.amqp.rabbit.annotation.RabbitListener;
+import org.springframework.stereotype.Component;
+
+@Slf4j
+@Component
+public class DirectQueueListener {
+
+    @RabbitListener(bindings = @QueueBinding(
+            value = @Queue("direct.queue1"),
+            exchange = @Exchange("example.direct"),
+            key = {"example"}
+    ))
+    public void listen(String message) {
+        log.info("Direct Queue1: {}", message);
+    }
+
+    @RabbitListener(bindings = @QueueBinding(
+            value = @Queue("direct.queue2"),
+            exchange = @Exchange("example.direct"),
+            key = {"example2"}
+    ))
+    public void listen2(String message) {
+        log.info("Direct Queue2: {}", message);
+    }
+
+}
+```
+
+- 添加测试方法发送消息
+
+```java
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
+
+@RunWith(SpringRunner.class)
+@SpringBootTest
+public class SpringAmqpTest {
+
+    @Autowired
+    private RabbitTemplate rabbitTemplate;
+
+    @Test
+
+    public void directQueue() {
+        // 定义交换机的名称
+        String exchange = "example.direct";
+        // 定义发送的消息
+        String message = "Hello Direct!";
+        rabbitTemplate.convertAndSend(exchange, "example", message);
+    }
+
+}
+```
+
