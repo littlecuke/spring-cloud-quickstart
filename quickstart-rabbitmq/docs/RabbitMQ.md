@@ -256,7 +256,6 @@ public class SpringAmqpTest {
     private RabbitTemplate rabbitTemplate;
 
     @Test
-
     public void directQueue() {
         // 定义交换机的名称
         String exchange = "example.direct";
