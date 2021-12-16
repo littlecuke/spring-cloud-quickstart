@@ -128,3 +128,67 @@ public class SpringAMQPListener {
 
 **注意：exchange负责的是消息的路由，而不是存储，路由失败则消息丢失**
 
+#### FanoutExchange
+
+- 创建一个配置类并声明FanoutExchange、Queue和绑定关系对象的Binding
+
+```java
+import org.springframework.amqp.core.Binding;
+import org.springframework.amqp.core.BindingBuilder;
+import org.springframework.amqp.core.FanoutExchange;
+import org.springframework.amqp.core.Queue;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+public class FanoutConfig {
+
+    @Bean
+    public FanoutExchange fanoutExchange() {
+        return new FanoutExchange("example.fanout");
+    }
+
+    @Bean
+    public Queue fanoutQueue1() {
+        return new Queue("fanout.queue1");
+    }
+
+    @Bean
+    public Binding bindingQueue1(Queue fanoutQueue1, FanoutExchange fanoutExchange) {
+        return BindingBuilder.bind(fanoutQueue1).to(fanoutExchange);
+    }
+    
+    // ... queue2
+
+}
+```
+
+- 在publisher服务中添加测试方法
+
+```java
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
+
+@RunWith(SpringRunner.class)
+@SpringBootTest
+public class SpringAmqpTest {
+
+    @Autowired
+    private RabbitTemplate rabbitTemplate;
+
+    @Test
+    public void sendFanout() {
+        // 定义交换机的名称
+        String exchangeName = "example.fanout";    
+        // 发送的消息
+        String message = "Hello World!";
+        rabbitTemplate.convertAndSend(exchangeName, "", message);
+    }
+    
+}
+```
+
