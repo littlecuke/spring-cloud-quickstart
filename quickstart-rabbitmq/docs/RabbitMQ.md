@@ -47,7 +47,7 @@ docker run \
 
 - 引入 `spring-boot-starter-amqp` 依赖
 - 配置RabbitMQ
-```yml
+```yaml
 spring:
   rabbitmq:
     host: 192.168.0.108
@@ -55,4 +55,58 @@ spring:
     virtual-host: /
     username: admin
     password: 123456
+```
+- 利用RabbitTemplate的convertAndSend方法
+```java
+@RunWith(SpringRunner.class)
+@SpringBootTest
+public class SpringAmqpTest {
+
+    @Autowired
+    private RabbitTemplate rabbitTemplate;
+
+    @Test
+    public void testSimpleQueue() {
+        String queueName = "simple.queue";
+        String message = "Hello RabbitMQ!";
+        rabbitTemplate.convertAndSend(queueName, message);
+    }
+
+}
+```
+
+### 7.SpringAMQP如何接收消息?
+
+- 引入 `spring-boot-starter-amqp` 依赖
+- 配置RabbitMQ
+
+```yaml
+spring:
+  rabbitmq:
+    host: 192.168.0.108
+    port: 5672
+    virtual-host: /
+    username: admin
+    password: 123456
+```
+
+- 定义一个有@Component注解的类
+- 类中声明方法，添加@RabbitListener注解，方法的形式参数就是接收到的消息
+
+```java
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.amqp.rabbit.annotation.RabbitListener;
+import org.springframework.stereotype.Component;
+
+@Slf4j
+@Component
+public class SpringAMQPListener {
+
+    public static final String QUEUE_NAME = "simple.queue";
+
+    @RabbitListener(queues = { QUEUE_NAME })
+    public void listenSimpleQueue(String message) {
+        log.info("[x] Spring AMQP received: {}", message);
+    }
+}
 ```
