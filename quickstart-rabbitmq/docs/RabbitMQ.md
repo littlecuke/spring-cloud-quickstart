@@ -38,3 +38,21 @@ docker run \
 - publisher：消息发布者，将消息发送到队列中
 - queue：消息队列，负责接收并缓存消息
 - consumer：消息消费者，处理消息队列中缓存的消息
+
+### 5.什么是AMQP?
+
+应用之间消息通信的一种协议，与语言和平台无关
+
+### 6.SpringAMQP如何发送消息?
+
+- 引入 `spring-boot-starter-amqp` 依赖
+- 配置RabbitMQ
+```yml
+spring:
+  rabbitmq:
+    host: 192.168.0.108
+    port: 5672
+    virtual-host: /
+    username: admin
+    password: 123456
+```

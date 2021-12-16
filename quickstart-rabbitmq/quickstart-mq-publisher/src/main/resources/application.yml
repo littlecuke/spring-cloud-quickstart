@@ -1,9 +1,12 @@
 spring:
   main:
-    banner-mode: off
+    banner-mode: off    # 关闭 Banner 打印输出
   rabbitmq:
-    host: 192.168.0.108 # 主机地址
-    port: 5672 # 端口
-    virtual-host: / # 虚拟主机
-    username: admin # 用户名
-    password: 123456 # 密码
+    host: 192.168.0.108 # Rabbit服务主机地址
+    port: 5672          # 端口
+    virtual-host: /     # 虚拟主机
+    username: admin     # 用户名
+    password: 123456    # 密码
+logging:
+  pattern:
+    dateformat: MM-dd HH:mm:ss
