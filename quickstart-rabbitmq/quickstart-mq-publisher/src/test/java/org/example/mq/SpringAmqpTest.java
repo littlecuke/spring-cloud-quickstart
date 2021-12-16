@@ -2,6 +2,7 @@ package org.example.mq;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.amqp.core.FanoutExchange;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -33,6 +34,13 @@ public class SpringAmqpTest {
             rabbitTemplate.convertAndSend(queueName, message + i);
             Thread.sleep(20);
         }
+    }
+
+    @Test
+    public void testSendFanoutMessage() {
+        String exchangeName = "example.fanout";
+        String message = "Hello World!";
+        rabbitTemplate.convertAndSend(exchangeName, "", message);
     }
 
 }
