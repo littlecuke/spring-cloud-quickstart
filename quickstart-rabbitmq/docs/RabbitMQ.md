@@ -267,3 +267,9 @@ public class SpringAmqpTest {
 }
 ```
 
+### 10.Direct交换机与Fanout交换机的区别
+
+- Fanout交换机将消息路由给每个与之绑定的队列
+- Direct交换机是根据RoutingKey判断路由给哪个队列
+- 如果队列具有相同的RoutingKey，则与Fanout功能相似
+
