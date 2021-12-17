@@ -267,6 +267,15 @@ public class SpringAmqpTest {
 }
 ```
 
+##### TopicExchange
+
+TopicExchange与DirectExchange类似，区别在于RoutingKey必须是多个单词的列表，并且以`.`进行分割
+
+Queue和Exchange指定BindingKey时可以使用通配符：
+
+- #：代指0个或多个单词
+- *：代指一个单词
+
 ### 10.Direct交换机与Fanout交换机的区别
 
 - Fanout交换机将消息路由给每个与之绑定的队列
