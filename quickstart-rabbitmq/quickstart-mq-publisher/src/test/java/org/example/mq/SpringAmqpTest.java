@@ -8,6 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class SpringAmqpTest {
@@ -55,6 +58,20 @@ public class SpringAmqpTest {
         String exchangeName = "example.topic";
         String message = "From Topic Exchange!";
         rabbitTemplate.convertAndSend(exchangeName, "example.news", message);
+    }
+
+    /**
+     * 测试RabbitMQ发送消息时自动序列化
+     */
+    @Test
+    public void testSendObjectQueue() {
+        String queue = "object.queue";
+
+        Map<String, Object> map = new HashMap<>();
+        map.put("code", 200);
+        map.put("message", "请求成功");
+
+        rabbitTemplate.convertAndSend(queue, map);
     }
 
 }
