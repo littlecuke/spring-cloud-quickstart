@@ -11,13 +11,4 @@
 
     <artifactId>quickstart-mq-publisher</artifactId>
 
-    <dependencies>
-        <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.dataformat/jackson-dataformat-xml -->
-        <dependency>
-            <groupId>com.fasterxml.jackson.dataformat</groupId>
-            <artifactId>jackson-dataformat-xml</artifactId>
-            <version>2.13.0</version>
-        </dependency>
-    </dependencies>
-
 </project>
